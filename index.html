@@ -8,7 +8,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Pulse">
 <link rel="manifest" href="manifest.json">
-<title>Pulse — Smart Expense Tracker v10</title>
+<title>Pulse — Smart Expense Tracker v13</title>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="config.js"></script>
 <style>
 :root{--bg:#070a12;--surface:#0e1422;--surface2:#151d30;--line:#263149;--text:#f8fafc;--muted:#94a3b8;--primary:#8b5cf6;--cyan:#22d3ee;--good:#34d399;--warn:#fbbf24;--danger:#fb7185;--shadow:0 24px 70px #0008}
@@ -137,7 +137,7 @@ button{min-height:42px}
 "use strict";
 const CONFIG = window.PULSE_CONFIG || { url:"", key:"" };
 const LEGACY_CONFIG_KEY = "pulse-supabase-config-v4";
-const LOCAL_CACHE = "pulse-commercial-v10";
+const LOCAL_CACHE = "pulse-commercial-v13";
 const LOCAL_PREFS = "pulse-commercial-prefs-v1";
 let sb=null, session=null, profile=null, state={expenses:[],categories:[],payments:[],payers:[],budgets:[],recurring:[],financial:null};
 let editingId=null;
@@ -595,10 +595,10 @@ function healthFor(t){
 }
 function financialHealthMarkup(t){
  const h=healthFor(t);
- if(h.score===null)return `<div class="finHealth"><div class="fhHead"><div><div class="eyebrow">FINANCIAL HEALTH</div><div class="fhTitle">Know where your money stands.</div><div class="fhSub">Pulse connects your income, expenses, savings and investments into one simple monthly view.</div></div></div><div class="fhEmpty" style="margin-top:15px"><b>Complete your monthly plan first.</b><br>${esc(h.note)}</div><div class="fhActions"><button class="btn primary" id="fhUpdateBtn">＋ Add salary & investments</button></div></div>`;
+ if(h.score===null)return `<div class="finHealth"><div class="fhHead"><div><div class="eyebrow">FINANCIAL HEALTH</div><div class="fhTitle">Know where your money stands.</div><div class="fhSub">Pulse connects your income, expenses, cash remaining and investments into one simple monthly view.</div></div></div><div class="fhEmpty" style="margin-top:15px"><b>Complete your monthly plan first.</b><br>${esc(h.note)}</div><div class="fhActions"><button class="btn primary" id="fhUpdateBtn">＋ Add salary & investments</button></div></div>`;
  const savings=Math.max(0,t.cashAfterExpenses),savingsRate=Math.max(0,t.cashAfterExpenses/t.income*100),score=h.score;
  const scoreColor=h.tone==='good'?'#34d399':h.tone==='warn'?'#fbbf24':'#fb7185';
- return `<div class="finHealth"><div class="fhHead"><div><div class="eyebrow">FINANCIAL HEALTH</div><div class="fhTitle">Your monthly money picture.</div><div class="fhSub">Income → Expenses → Savings → Investments → Financial Health</div></div><div class="zone ${h.tone}" style="margin-top:0"><div><b>${h.tone==='good'?'🟢':h.tone==='warn'?'🟡':'🔴'} ${esc(h.status)}</b></div><strong>${score}/100</strong></div></div><div class="fhFlow"><div class="fhMetric"><div class="k">Income</div><div class="v">${money(t.income)}</div></div><div class="fhMetric"><div class="k">Expenses</div><div class="v">${money(t.spent)}</div></div><div class="fhMetric"><div class="k">Savings</div><div class="v">${money(savings)}</div></div><div class="fhMetric"><div class="k">Investments</div><div class="v">${money(t.invested)}</div></div></div><div class="fhScore"><div class="fhCircle" style="--score:${score*3.6}deg"><b>${score}</b></div><div><div class="fhStatus" style="color:${scoreColor}">⭐ Financial Health: ${esc(h.status)}</div><div class="fhHint">Savings rate: <b>${savingsRate.toFixed(1)}%</b> · Investment rate: <b>${t.rate.toFixed(1)}%</b> · Expense rate: <b>${(t.spent/t.income*100).toFixed(1)}%</b></div><div class="fhBar"><i style="width:${score}%"></i></div><div class="fhHint">${esc(h.note)} This is a Pulse planning indicator, not financial advice.</div></div></div><div class="fhActions"><button class="btn" id="fhUpdateBtn">✦ Update monthly plan</button></div></div>`;
+ return `<div class="finHealth"><div class="fhHead"><div><div class="eyebrow">FINANCIAL HEALTH</div><div class="fhTitle">Your monthly money picture.</div><div class="fhSub">Income → Expenses → Cash Remaining → Investments → Financial Health</div></div><div class="zone ${h.tone}" style="margin-top:0"><div><b>${h.tone==='good'?'🟢':h.tone==='warn'?'🟡':'🔴'} ${esc(h.status)}</b></div><strong>${score}/100</strong></div></div><div class="fhFlow"><div class="fhMetric"><div class="k">Income</div><div class="v">${money(t.income)}</div></div><div class="fhMetric"><div class="k">Expenses</div><div class="v">${money(t.spent)}</div></div><div class="fhMetric"><div class="k">Cash Remaining</div><div class="v">${money(savings)}</div></div><div class="fhMetric"><div class="k">Investments</div><div class="v">${money(t.invested)}</div></div></div><div class="fhScore"><div class="fhCircle" style="--score:${score*3.6}deg"><b>${score}</b></div><div><div class="fhStatus" style="color:${scoreColor}">⭐ Financial Health: ${esc(h.status)}</div><div class="fhHint">Cash remaining rate: <b>${savingsRate.toFixed(1)}%</b> · Investment rate: <b>${t.rate.toFixed(1)}%</b> · Expense rate: <b>${(t.spent/t.income*100).toFixed(1)}%</b></div><div class="fhBar"><i style="width:${score}%"></i></div><div class="fhHint">${esc(h.note)} This is a Pulse planning indicator, not financial advice.</div></div></div><div class="fhActions"><button class="btn" id="fhUpdateBtn">✦ Update monthly plan</button></div></div>`;
 }
 function bindFinancialHealth(){const b=$("fhUpdateBtn");if(b)b.onclick=()=>openSavings();}
 function renderSavings(){const t=financialTotals(state.financial);if($("savingsHome"))$("savingsHome").innerHTML=savingsMarkup(t);if($("savingsPage"))$("savingsPage").innerHTML=`<div class="card cardPad">${savingsMarkup(t)}${financialHealthMarkup(t)}</div>`;if($("financialHealthHome"))$("financialHealthHome").innerHTML=financialHealthMarkup(t);bindFinancialHealth();}
