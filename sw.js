@@ -1,4 +1,4 @@
-const CACHE="pulse-commercial-v12-financial-health";
+const CACHE="pulse-commercial-v13-financial-health";
 const CORE=["./","./index.html","./manifest.json","./config.js"];
 self.addEventListener("install",e=>e.waitUntil(caches.open(CACHE).then(c=>c.addAll(CORE)).then(()=>self.skipWaiting())));
 self.addEventListener("activate",e=>e.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim())));
