@@ -485,7 +485,24 @@ function renderInsights(a,cm){const items=[];const thisM=currentMonth();const mT
 function renderBudgetHealth(){const m=currentMonth(),overall=state.budgets.find(b=>b.month===m&&!b.category_id);const spent=state.expenses.filter(x=>monthKey(x.date)===m).reduce((s,x)=>s+x.amount,0);if(!overall){$("budgetHealth").innerHTML='<div class="empty">No overall budget for this month.<br><button class="btn primary" style="margin-top:10px" id="quickBudget">Set one</button></div>';setTimeout(()=>{$("quickBudget")?.addEventListener("click",()=>openBudget())},0);return}const pct=Math.min(100,spent/Number(overall.amount)*100);$("budgetHealth").innerHTML=`<div class="budgetTop"><strong>${money(spent)} spent</strong><strong>${money(overall.amount)}</strong></div><div class="progress"><div style="width:${pct}%"></div></div><p style="color:#94a3b8;font-size:12px">${money(Math.max(0,Number(overall.amount)-spent))} remaining • ${pct.toFixed(0)}% used</p>`}
 function renderBudgetGrid(){if(!$("budgetGrid"))return;const m=currentMonth();$("budgetGrid").innerHTML=state.budgets.length?state.budgets.map(b=>{const spent=state.expenses.filter(x=>monthKey(x.date)===b.month&&(!b.category_id||x.type===b.category_name)).reduce((s,x)=>s+x.amount,0);const pct=Math.min(100,spent/Number(b.amount)*100);return `<div class="card budget"><div class="budgetTop"><strong>${esc(b.category_name||"Overall")}</strong><strong>${money(b.amount)}</strong></div><small style="color:#94a3b8">${fmtMonth(b.month)} • ${money(spent)} spent</small><div class="progress"><div style="width:${pct}%"></div></div><div style="margin-top:8px;color:#94a3b8;font-size:11px">${money(Math.max(0,Number(b.amount)-spent))} remaining</div></div>`}).join(""):'<div class="card cardPad" style="grid-column:1/-1"><div class="empty">No budgets yet. Add your first monthly budget.</div></div>'}
 async function openBudget(){ $("bmonth").value=currentMonth();$("bamount").value="";$("bcat").innerHTML='<option value="">Overall budget</option>'+state.categories.map(x=>`<option value="${x.id}" data-name="${esc(x.name)}">${esc(x.name)}</option>`).join("");openModal("budgetModal")}
-async function saveBudget(){const month=$("bmonth").value,amount=Number($("bamount").value),sel=$("bcat").selectedOptions[0],catId=$("bcat").value||null,catName=sel?.dataset.name||null;if(!month||!amount){alert("Enter month and amount.");return}const r=await sb.from("budgets").upsert({user_id:session.user.id,month,amount,category_id:catId,category_name:catName},{onConflict:"user_id,month,category_id"}).select().single();if(r.error){alert(r.error.message);return}state.budgets=state.budgets.filter(b=>!(b.month===month&&b.category_id===catId));state.budgets.push(r.data);cache();renderHome();closeModal("budgetModal");toast("Budget saved")}
+async function saveBudget(){
+  const month=$("bmonth").value,amount=Number($("bamount").value),sel=$("bcat").selectedOptions[0],catId=$("bcat").value||null,catName=sel?.dataset.name||null;
+  if(!month||!amount){alert("Enter month and amount.");return}
+  const payload={user_id:session.user.id,month,amount,category_id:catId,category_name:catName};
+  // Do not rely on an ON CONFLICT target here: older Pulse databases may not have
+  // the matching unique constraint, and category_id can be NULL for overall budgets.
+  const existing=state.budgets.find(b=>b.month===month&&((b.category_id||null)===(catId||null)));
+  let r;
+  if(existing){
+    r=await sb.from("budgets").update({amount,category_name:catName}).eq("id",existing.id).eq("user_id",session.user.id).select().single();
+  }else{
+    r=await sb.from("budgets").insert(payload).select().single();
+  }
+  if(r.error){alert(r.error.message);return}
+  state.budgets=state.budgets.filter(b=>b.id!==r.data.id);
+  state.budgets.push(r.data);
+  cache();renderHome();closeModal("budgetModal");toast(existing?"Budget updated":"Budget saved")
+}
 function openTemplates(){renderTemplateContent("categories");openModal("templatesModal")}
 function renderTemplateContent(kind){
  document.querySelectorAll("[data-tpltab]").forEach(x=>x.classList.toggle("active",x.dataset.tpltab===kind));
