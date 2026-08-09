@@ -164,7 +164,9 @@ function loadCache(){}
 function openModal(id){$(id).classList.add("show")}
 function closeModal(id){$(id).classList.remove("show")}
 function setView(name){document.querySelectorAll("[data-view]").forEach(x=>x.hidden=x.dataset.view!==name);document.querySelectorAll("[data-nav]").forEach(x=>x.classList.toggle("active",x.dataset.nav===name))}
-function monthKey(d){return d.slice(0,7)}
+function monthKey(d){return String(d||"").slice(0,7)}
+function normalizeMonth(m){return String(m||"").slice(0,7)}
+function monthDbDate(m){return normalizeMonth(m)+"-01"}
 function currentMonth(){return new Date().toISOString().slice(0,7)}
 function fmtMonth(m){return new Date(m+"-02").toLocaleDateString("en-IN",{month:"long",year:"numeric"})}
 
@@ -486,23 +488,60 @@ function renderBudgetHealth(){const m=currentMonth(),overall=state.budgets.find(
 function renderBudgetGrid(){if(!$("budgetGrid"))return;const m=currentMonth();$("budgetGrid").innerHTML=state.budgets.length?state.budgets.map(b=>{const spent=state.expenses.filter(x=>monthKey(x.date)===b.month&&(!b.category_id||x.type===b.category_name)).reduce((s,x)=>s+x.amount,0);const pct=Math.min(100,spent/Number(b.amount)*100);return `<div class="card budget"><div class="budgetTop"><strong>${esc(b.category_name||"Overall")}</strong><strong>${money(b.amount)}</strong></div><small style="color:#94a3b8">${fmtMonth(b.month)} • ${money(spent)} spent</small><div class="progress"><div style="width:${pct}%"></div></div><div style="margin-top:8px;color:#94a3b8;font-size:11px">${money(Math.max(0,Number(b.amount)-spent))} remaining</div></div>`}).join(""):'<div class="card cardPad" style="grid-column:1/-1"><div class="empty">No budgets yet. Add your first monthly budget.</div></div>'}
 async function openBudget(){ $("bmonth").value=currentMonth();$("bamount").value="";$("bcat").innerHTML='<option value="">Overall budget</option>'+state.categories.map(x=>`<option value="${x.id}" data-name="${esc(x.name)}">${esc(x.name)}</option>`).join("");openModal("budgetModal")}
 async function saveBudget(){
-  const month=$("bmonth").value,amount=Number($("bamount").value),sel=$("bcat").selectedOptions[0],catId=$("bcat").value||null,catName=sel?.dataset.name||null;
-  if(!month||!amount){alert("Enter month and amount.");return}
-  const payload={user_id:session.user.id,month,amount,category_id:catId,category_name:catName};
-  // Do not rely on an ON CONFLICT target here: older Pulse databases may not have
-  // the matching unique constraint, and category_id can be NULL for overall budgets.
-  const existing=state.budgets.find(b=>b.month===month&&((b.category_id||null)===(catId||null)));
+  const month=normalizeMonth($("bmonth").value);
+  const amount=Number($("bamount").value);
+  const sel=$("bcat").selectedOptions[0];
+  const catId=$("bcat").value||null;
+  const catName=sel?.dataset.name||null;
+  if(!/^\d{4}-(0[1-9]|1[0-2])$/.test(month)||!amount){
+    alert("Enter a valid month and amount.");
+    return;
+  }
+
+  // The deployed budgets.month column is DATE, while the HTML month control
+  // returns YYYY-MM. Store the first day of the selected month in Supabase.
+  const dbMonth=monthDbDate(month);
+  const existing=state.budgets.find(
+    b=>normalizeMonth(b.month)===month &&
+       ((b.category_id||null)===(catId||null))
+  );
+
   let r;
   if(existing){
-    r=await sb.from("budgets").update({amount,category_name:catName}).eq("id",existing.id).eq("user_id",session.user.id).select().single();
+    r=await sb.from("budgets")
+      .update({month:dbMonth,amount,category_name:catName})
+      .eq("id",existing.id)
+      .eq("user_id",session.user.id)
+      .select()
+      .single();
   }else{
-    r=await sb.from("budgets").insert(payload).select().single();
+    r=await sb.from("budgets")
+      .insert({
+        user_id:session.user.id,
+        month:dbMonth,
+        amount,
+        category_id:catId,
+        category_name:catName
+      })
+      .select()
+      .single();
   }
+
   if(r.error){alert(r.error.message);return}
-  state.budgets=state.budgets.filter(b=>b.id!==r.data.id);
-  state.budgets.push(r.data);
-  cache();renderHome();closeModal("budgetModal");toast(existing?"Budget updated":"Budget saved")
+
+  const saved={...r.data,month:normalizeMonth(r.data.month)};
+  state.budgets=state.budgets.filter(
+    b=>b.id!==saved.id &&
+       !(normalizeMonth(b.month)===month && ((b.category_id||null)===(catId||null)))
+  );
+  state.budgets.push(saved);
+
+  cache();
+  renderHome();
+  closeModal("budgetModal");
+  toast(existing?"Budget updated":"Budget saved");
 }
+
 function openTemplates(){renderTemplateContent("categories");openModal("templatesModal")}
 function renderTemplateContent(kind){
  document.querySelectorAll("[data-tpltab]").forEach(x=>x.classList.toggle("active",x.dataset.tpltab===kind));
