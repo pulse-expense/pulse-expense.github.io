@@ -119,7 +119,16 @@ button{min-height:42px}
 /* Pulse v10 product polish */
 .linkBtn{display:block;margin:14px auto 0;border:0;background:transparent;color:#c4b5fd;font-weight:800;cursor:pointer}.linkBtn:hover{text-decoration:underline}.dangerPanel{margin-top:14px;padding:14px;border:1px solid #fb718544;border-radius:16px;background:#fb71850b;display:grid;gap:5px}.dangerPanel b{color:#fecdd3}.dangerPanel small{color:#94a3b8;line-height:1.5}.reportList{display:grid;gap:10px}.reportRow{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px;align-items:center;padding:11px 0;border-bottom:1px solid var(--line)}.reportRow:last-child{border-bottom:0}.reportMeta{display:grid;gap:5px}.reportBar{height:7px;border-radius:99px;background:#ffffff0a;overflow:hidden}.reportBar i{display:block;height:100%;background:linear-gradient(90deg,#8b5cf6,#22d3ee);border-radius:99px}.reportAmount{font-weight:900}.chart{position:relative;display:flex;align-items:flex-end;gap:3px;height:210px;padding:12px 6px 26px;overflow-x:auto}.barCol{position:relative;flex:1 0 18px;min-width:18px;height:100%;display:flex;align-items:flex-end;justify-content:center}.barCol .bar{width:100%;min-height:0;border-radius:6px 6px 3px 3px;background:linear-gradient(180deg,#22d3ee,#8b5cf6);transition:height .2s ease}.barCol span{position:absolute;bottom:-21px;font-size:9px;color:#64748b}.barCol.isToday span{color:#e2e8f0;font-weight:800}.chartEmpty{height:100%;width:100%;display:grid;place-items:center;color:#64748b;font-size:13px}.reportStats{margin-top:15px}
 @media(max-width:680px){.chart{height:185px;gap:2px}.barCol{min-width:10px}.barCol span{font-size:7px}.reportRow{grid-template-columns:minmax(0,1fr) auto}.reportStats{margin-top:10px}.dangerPanel{font-size:13px}}
-</style></head>
+</style>
+<style id="pulse-savings-v11">
+.savingsHero{background:linear-gradient(135deg,#21164f,#10253b 58%,#063d42);border:1px solid #33415f;border-radius:24px;padding:22px;box-shadow:0 18px 55px #0006}.moneyFlow{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px}.moneyMetric{padding:14px;border:1px solid var(--line);background:#ffffff06;border-radius:15px}.moneyMetric .k{color:var(--muted);font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.04em}.moneyMetric .v{font-size:24px;font-weight:900;margin-top:5px}.investGrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.investRow{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:11px 12px;border:1px solid var(--line);background:#ffffff05;border-radius:13px}.investRow b{font-size:13px}.investRow span{color:#dbeafe;font-weight:850}.zone{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:12px 14px;border-radius:14px;border:1px solid var(--line);margin-top:12px}.zone.good{background:#34d39914;border-color:#34d39955}.zone.warn{background:#fbbf2412;border-color:#fbbf2455}.zone.low{background:#fb718512;border-color:#fb718555}.zone b{font-size:14px}.zone small{color:#cbd5e1}.savingsBar{height:10px;background:#ffffff0d;border-radius:99px;overflow:hidden;margin-top:12px}.savingsBar i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,#8b5cf6,#22d3ee)}.savingsNote{font-size:11px;color:#94a3b8;line-height:1.45;margin-top:10px}@media(max-width:760px){.moneyFlow{grid-template-columns:1fr 1fr}.investGrid{grid-template-columns:1fr}.moneyMetric .v{font-size:21px}}
+</style>
+
+<style id="pulse-financial-health-v12">
+.healthCard{margin-top:15px;background:linear-gradient(135deg,#0f1b33,#15153b 55%,#082f3a);border:1px solid #33415f;border-radius:22px;padding:20px;box-shadow:0 18px 55px #0005}.healthHead{display:flex;justify-content:space-between;align-items:center;gap:15px;flex-wrap:wrap}.healthScore{display:flex;align-items:center;gap:12px}.healthRing{width:68px;height:68px;border-radius:50%;display:grid;place-items:center;background:conic-gradient(#22d3ee calc(var(--score)*1%),#ffffff10 0);position:relative;flex:0 0 auto}.healthRing:after{content:"";position:absolute;inset:6px;border-radius:50%;background:#10182b}.healthRing strong{position:relative;z-index:1;font-size:17px}.healthTitle{font-size:17px;font-weight:900}.healthSub{font-size:11px;color:#94a3b8;margin-top:3px}.healthMetrics{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin-top:15px}.healthMetric{padding:12px;border:1px solid var(--line);border-radius:14px;background:#ffffff06}.healthMetric .k{font-size:10px;color:#94a3b8;text-transform:uppercase;font-weight:850}.healthMetric .v{font-size:18px;font-weight:900;margin-top:4px}.healthMetric .s{font-size:10px;color:#64748b;margin-top:2px}.healthBar{height:8px;border-radius:99px;background:#ffffff0d;overflow:hidden;margin-top:14px}.healthBar i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,#8b5cf6,#22d3ee)}.healthNote{font-size:10px;color:#94a3b8;line-height:1.45;margin-top:10px}.healthCard.strong{border-color:#34d39955}.healthCard.good{border-color:#22d3ee55}.healthCard.building{border-color:#fbbf2455}.healthCard.attention{border-color:#fb718555}
+@media(max-width:760px){.healthMetrics{grid-template-columns:1fr 1fr}.healthCard{padding:17px}.healthMetric .v{font-size:16px}}
+</style>
+</head>
 <body>
 <div id="root"></div>
 <div id="toast" class="toast"></div>
@@ -131,7 +140,7 @@ const CONFIG = window.PULSE_CONFIG || { url:"", key:"" };
 const LEGACY_CONFIG_KEY = "pulse-supabase-config-v4";
 const LOCAL_CACHE = "pulse-commercial-v10";
 const LOCAL_PREFS = "pulse-commercial-prefs-v1";
-let sb=null, session=null, profile=null, state={expenses:[],categories:[],payments:[],payers:[],budgets:[],recurring:[]};
+let sb=null, session=null, profile=null, state={expenses:[],categories:[],payments:[],payers:[],budgets:[],recurring:[],financial:null};
 let editingId=null;
 
 
@@ -228,22 +237,24 @@ async function signup(){
 async function loadAll(){
  if(!session)return;
  const uid=session.user.id;
- const [p,c,pm,py,b,r,e]=await Promise.all([
+ const [p,c,pm,py,b,r,e,financial]=await Promise.all([
   sb.from("profiles").select("*").eq("id",uid).maybeSingle(),
   sb.from("categories").select("*").eq("user_id",uid).order("name"),
   sb.from("payment_methods").select("*").eq("user_id",uid).order("name"),
   sb.from("payers").select("*").eq("user_id",uid).order("name"),
   sb.from("budgets").select("*").eq("user_id",uid).order("month",{ascending:false}),
   sb.from("recurring_expenses").select("*").eq("user_id",uid).order("next_date"),
-  sb.from("expenses").select("*").eq("user_id",uid).order("date",{ascending:false}).order("created_at",{ascending:false})
+  sb.from("expenses").select("*").eq("user_id",uid).order("date",{ascending:false}).order("created_at",{ascending:false}),
+  sb.from("monthly_financials").select("*").eq("user_id",uid).eq("month",currentMonth()).maybeSingle()
  ]);
- const bad=[p,c,pm,py,b,r,e].find(x=>x.error);
+ if(financial?.error?.code==="42P01")financial={data:null,error:null};
+ const bad=[p,c,pm,py,b,r,e,financial].find(x=>x.error);
  if(bad){console.error(bad.error);toast("Cloud load error: "+bad.error.message);return}
  profile=p.data||{id:uid,display_name:session.user.email.split("@")[0],currency:"INR"};
  state.categories=(c.data||[]).map(x=>({id:x.id,name:x.name,icon:x.icon||"•"}));
  state.payments=(pm.data||[]).map(x=>({id:x.id,name:x.name}));
  state.payers=(py.data||[]).map(x=>({id:x.id,name:x.name}));
- state.budgets=b.data||[];state.recurring=r.data||[];
+ state.budgets=b.data||[];state.recurring=r.data||[];state.financial=financial.data||null;
  state.expenses=(e.data||[]).map(x=>({id:x.id,date:x.date,detail:x.detail,type:x.type,amount:Number(x.amount),paidvia:x.paid_via,paidby:x.paid_by,notes:x.notes||""}));
  cache();renderApp();
 }
@@ -251,7 +262,7 @@ async function loadAll(){
 function appShell(){
  document.body.innerHTML=`<div class="app">
 <header class="top"><div class="brand"><div class="logo">✦</div><div><h1>Pulse</h1><p>Your private money command center</p></div></div>
-<div class="actions"><span id="syncBadge" class="badge">☁ Synced</span><div class="desktopNav"><button class="navLink active" data-nav="home">Home</button><button class="navLink" data-nav="expenses">Expenses</button><button class="navLink" data-nav="reports">Reports</button><button class="navLink" data-nav="budgets">Budgets</button></div><button class="btn accountBtn" id="profileBtn" aria-haspopup="menu" aria-expanded="false">👤 <span id="userName">Account</span> <span class="chev">⌄</span></button><div id="accountMenu" class="accountMenu" aria-hidden="true">
+<div class="actions"><span id="syncBadge" class="badge">☁ Synced</span><div class="desktopNav"><button class="navLink active" data-nav="home">Home</button><button class="navLink" data-nav="expenses">Expenses</button><button class="navLink" data-nav="reports">Reports</button><button class="navLink" data-nav="savings">Savings</button><button class="navLink" data-nav="budgets">Budgets</button></div><button class="btn accountBtn" id="profileBtn" aria-haspopup="menu" aria-expanded="false">👤 <span id="userName">Account</span> <span class="chev">⌄</span></button><div id="accountMenu" class="accountMenu" aria-hidden="true">
   <div class="accountMenuHead"><small>Signed in as</small><b id="accountMenuEmail">Account</b></div>
   <button type="button" data-account-action="profile">👤 Profile</button>
   <button type="button" data-account-action="settings">⚙️ Settings</button>
@@ -266,24 +277,28 @@ function appShell(){
 <div class="stats"><div class="card stat"><div class="label">Transactions</div><div id="count" class="num">0</div><div class="sub">selected view</div></div><div class="card stat"><div class="label">Average</div><div id="avg" class="num">₹0</div><div class="sub">per transaction</div></div><div class="card stat"><div class="label">Largest</div><div id="largest" class="num">₹0</div><div class="sub">single expense</div></div><div class="card stat"><div class="label">Top category</div><div id="topCat" class="num">—</div><div class="sub" id="topCatAmt">₹0</div></div></div>
 
 <div class="grid2"><div class="card cardPad"><h3>Spending pulse</h3><div id="chart" class="chart"></div></div><div class="card cardPad"><h3>Category breakdown</h3><div id="cats" class="cats"></div></div></div>
-<div class="grid2" style="margin-top:15px"><div class="card cardPad"><h3>Budget health</h3><div id="budgetHealth"></div></div><div class="card cardPad"><h3>Pulse insights</h3><div id="insights" class="insights"></div></div></div>
+<div class="grid2" style="margin-top:15px"><div class="card cardPad"><h3>Budget health</h3><div id="budgetHealth"></div></div><div class="card cardPad"><h3>Pulse insights</h3><div id="insights" class="insights"></div></div></div><div class="savingsHero" style="margin-top:15px"><div class="eyebrow">SAVINGS & INVESTMENTS</div><div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap"><div><h3 style="margin:5px 0 4px">Make your money work harder.</h3><p style="margin:0;color:#cbd5e1">Track salary, monthly savings and investments in one place.</p></div><button id="editSavingsBtn" class="btn primary">＋ Update plan</button></div><div id="savingsHome"></div></div><div id="healthHome"></div>
 
 <div class="card tableCard"><div class="tableHead"><div><h3 style="margin:0">Recent expenses</h3><small id="shown" style="color:#94a3b8"></small></div><div class="actions"><button id="importBtn" class="btn desktop">Import CSV</button><button id="exportBtn" class="btn desktop">Export</button><button id="deleteAllBtn" class="btn danger desktop">Delete all</button><input id="fileInput" type="file" accept=".csv" hidden></div></div><div class="tableWrap"><table><thead><tr><th>Date</th><th>Expense</th><th>Category</th><th>Amount</th><th>Paid via</th><th>Paid by</th><th></th></tr></thead><tbody id="tbody"></tbody></table></div></div>
 </section>
+
+<section data-view="savings" hidden><div class="savingsHero"><div class="eyebrow">SAVINGS & INVESTMENTS</div><h2 style="margin:6px 0">Build wealth, one month at a time.</h2><p style="color:#cbd5e1">Track your take-home salary and planned monthly investments. The investment-rate zones are Pulse guidelines, not financial advice.</p><button id="editSavingsBtn2" class="btn primary">✦ Update monthly plan</button></div><div id="savingsPage" style="margin-top:15px"></div><div id="healthPage"></div></section>
 
 <section data-view="budgets" hidden><div class="hero"><div class="eyebrow">BUDGETS</div><h2>Give every rupee a job.</h2><p>Set monthly limits and see how much is left.</p><button id="addBudgetBtn" class="btn primary">＋ Add budget</button></div><div id="budgetGrid" class="budgetGrid" style="margin-top:15px"></div></section>
 
 <section data-view="expenses" hidden><div class="card cardPad"><h3>All expenses</h3><div class="filters"><input id="expenseSearch" class="control" placeholder="Search…"><button id="exportBtn2" class="btn">Export CSV</button><button id="importBtn2" class="btn">Import CSV</button></div><div class="tableWrap" style="margin-top:12px"><table><thead><tr><th>Date</th><th>Expense</th><th>Category</th><th>Amount</th><th>Paid via</th><th>Paid by</th><th></th></tr></thead><tbody id="tbody2"></tbody></table></div></div></section>
 <section data-view="reports" hidden><div class="hero"><div class="eyebrow">REPORTS</div><h2>Understand your spending.</h2><p>Use the selected month to see where your money is going.</p><div class="filters" style="margin-top:14px"><select id="reportMonth" class="control"></select></div></div><div class="stats reportStats"><div class="card stat"><div class="label">Total spent</div><div id="reportTotal" class="num">₹0</div><div class="sub">selected month</div></div><div class="card stat"><div class="label">Daily average</div><div id="reportDaily" class="num">₹0</div><div class="sub">calendar day</div></div><div class="card stat"><div class="label">Transactions</div><div id="reportCount" class="num">0</div><div class="sub">selected month</div></div><div class="card stat"><div class="label">Largest expense</div><div id="reportLargest" class="num">₹0</div><div class="sub" id="reportLargestName">—</div></div></div><div class="grid2"><div class="card cardPad"><h3>By category</h3><div id="reportCats" class="reportList"></div></div><div class="card cardPad"><h3>By payment method</h3><div id="reportPays" class="reportList"></div></div></div></section>
 
-<section data-view="more" hidden><div class="card cardPad"><h3>Account & settings</h3><div class="note">Signed in as <b id="accountEmail"></b>. Your data is isolated by PostgreSQL RLS using your authenticated user ID.</div><div class="list"><button class="btn" id="templatesBtn">⚙ Manage templates</button><button class="btn" id="profileBtn2">👤 Profile</button><button class="btn" id="securityBtn">🔐 Security</button><button class="btn danger" id="logoutBtn">🚪 Sign out</button><button class="btn danger" id="deleteAccountBtn">🗑 Delete my account</button></div></div></section>
+<section data-view="more" hidden><div class="card cardPad"><h3>Account & settings</h3><div class="note">Signed in as <b id="accountEmail"></b>. Your data is isolated by PostgreSQL RLS using your authenticated user ID.</div><div class="list"><button class="btn" id="templatesBtn">⚙ Manage templates</button><button class="btn" id="profileBtn2">👤 Profile</button><button class="btn" id="securityBtn">🔐 Security</button><button class="btn" id="savingsBtnMore">📈 Savings & investments</button><button class="btn danger" id="logoutBtn">🚪 Sign out</button><button class="btn danger" id="deleteAccountBtn">🗑 Delete my account</button></div></div></section>
 
-<nav class="bottomNav"><button data-nav="home" class="active">⌂<br>Home</button><button data-nav="expenses">▤<br>Expenses</button><button data-nav="reports">▥<br>Reports</button><button data-nav="budgets">◉<br>Budgets</button><button data-nav="more">•••<br>More</button></nav>
+<nav class="bottomNav"><button data-nav="home" class="active">⌂<br>Home</button><button data-nav="expenses">▤<br>Expenses</button><button data-nav="reports">▥<br>Reports</button><button data-nav="savings">📈<br>Savings</button><button data-nav="more">•••<br>More</button></nav>
 </div>
 
 <div id="expenseModal" class="modal"><div class="modalBox"><div class="modalHead"><h2 id="expenseTitle">Add expense</h2><button class="close" data-close="expenseModal">×</button></div><div class="form"><div class="field"><label>Date</label><input id="fdate" type="date"></div><div class="field"><label>Amount</label><input id="famount" type="number" min="0" step="0.01" inputmode="decimal"></div><div class="field full"><label>Expense detail</label><input id="fdetail" placeholder="What did you spend on?"></div><div class="field"><label>Category</label><select id="ftype"></select></div><div class="field"><label>Paid via</label><select id="fvia"></select></div><div class="field"><label>Paid by</label><select id="fby"></select></div><div class="field full"><label>Notes (optional)</label><textarea id="fnotes" placeholder="Optional note"></textarea></div></div><div class="modalFoot"><button class="btn" data-close="expenseModal">Cancel</button><button id="saveExpense" class="btn primary">Save expense</button></div></div></div>
 
 <div id="templatesModal" class="modal"><div class="modalBox templatesModalBox"><div class="modalHead"><h2>Template Studio</h2><button class="close" data-close="templatesModal">×</button></div><div class="navTabs"><button class="tab active" data-tpltab="categories">Categories</button><button class="tab" data-tpltab="payments">Payment methods</button><button class="tab" data-tpltab="payers">Paid by</button></div><div id="tplContent"></div></div></div>
+
+<div id="savingsModal" class="modal"><div class="modalBox"><div class="modalHead"><div><div class="eyebrow">MONTHLY PLAN</div><h2>Update savings & investments</h2><p class="modalSubtitle">Enter your take-home salary and planned monthly contributions.</p></div><button class="close" data-close="savingsModal">×</button></div><div class="form"><div class="field"><label>Month</label><input id="smonth" type="month"></div><div class="field"><label>Take-home salary</label><input id="sincome" type="number" min="0" step="100" inputmode="decimal" placeholder="80000"></div><div class="field"><label>Monthly SIP / Mutual Funds</label><input id="ssip" type="number" min="0" step="100" inputmode="decimal"></div><div class="field"><label>Market / Stocks</label><input id="smarket" type="number" min="0" step="100" inputmode="decimal"></div><div class="field"><label>Recurring Deposit (RD)</label><input id="srd" type="number" min="0" step="100" inputmode="decimal"></div><div class="field"><label>Fixed Deposit (FD)</label><input id="sfd" type="number" min="0" step="100" inputmode="decimal"></div><div class="field"><label>Gold</label><input id="sgold" type="number" min="0" step="100" inputmode="decimal"></div><div class="field"><label>PPF / NPS</label><input id="sppf" type="number" min="0" step="100" inputmode="decimal"></div><div class="field full"><label>Other investments</label><input id="sother" type="number" min="0" step="100" inputmode="decimal"></div></div><div class="savingsNote">Pulse calculates investment rate as monthly investments ÷ take-home salary. A 30%+ rate is shown as the preferred zone in Pulse's guideline; your personal target should reflect your own goals and obligations.</div><div class="modalFoot"><button class="btn" data-close="savingsModal">Cancel</button><button id="saveSavings" class="btn primary">Save monthly plan</button></div></div></div>
 
 <div id="budgetModal" class="modal"><div class="modalBox"><div class="modalHead"><h2>Add monthly budget</h2><button class="close" data-close="budgetModal">×</button></div><div class="form"><div class="field"><label>Month</label><input id="bmonth" type="month"></div><div class="field"><label>Amount</label><input id="bamount" type="number" min="0" step="0.01"></div><div class="field full"><label>Category (optional)</label><select id="bcat"><option value="">Overall budget</option></select></div></div><div class="modalFoot"><button class="btn" data-close="budgetModal">Cancel</button><button id="saveBudget" class="btn primary">Save budget</button></div></div></div>
 
@@ -342,7 +357,7 @@ function bindApp(){
  $("settingsBtn").onclick=()=>openModal("settingsModal");$("logoutBtn").onclick=logout;
  document.querySelectorAll("[data-account-action]").forEach(btn=>btn.onclick=()=>{const act=btn.dataset.accountAction;closeAccountMenu();if(act==="profile")openProfile();else if(act==="settings")openModal("settingsModal");else if(act==="security")openModal("securityModal")});
  $("accountMenuSignOut").onclick=()=>{closeAccountMenu();if(confirm("Sign out of Pulse? Your cloud data will remain safely stored in your account."))logout()};bindOnboarding();
- $("saveExpense").onclick=saveExpense;$("addBudgetBtn").onclick=()=>openBudget();$("saveBudget").onclick=saveBudget;
+ $("saveExpense").onclick=saveExpense;$("addBudgetBtn").onclick=()=>openBudget();$("saveBudget").onclick=saveBudget;$("editSavingsBtn")?.addEventListener("click",()=>openSavings());$("editSavingsBtn2")?.addEventListener("click",()=>openSavings());$("saveSavings").onclick=saveSavings;$("savingsBtnMore")?.addEventListener("click",()=>{closeAccountMenu();setView("savings")});
  $("saveProfile").onclick=saveProfile;
  ["monthFilter","catFilter","payFilter","search"].forEach(id=>$(id).addEventListener("input",renderHome));
  $("resetBtn").onclick=()=>{["monthFilter","catFilter","payFilter","search"].forEach(id=>$(id).value="");renderHome()};$("reportMonth").onchange=renderReports;
@@ -436,7 +451,7 @@ function renderHome(){
  if(!$("total"))return;renderFilters();renderQuickActions();renderSetupBanner();const a=filteredExpenses();const total=a.reduce((s,x)=>s+x.amount,0);$("total").textContent=money(total);$("count").textContent=a.length;$("avg").textContent=money(a.length?total/a.length:0);
  const largest=a.reduce((m,x)=>!m||x.amount>m.amount?x:m,null);$("largest").textContent=money(largest?.amount||0);
  const cm={};a.forEach(x=>cm[x.type]=(cm[x.type]||0)+x.amount);const top=Object.entries(cm).sort((a,b)=>b[1]-a[1])[0];$("topCat").textContent=top?.[0]||"—";$("topCatAmt").textContent=money(top?.[1]||0);$("delta").textContent=`${a.length} transaction${a.length===1?"":"s"} in selected view`;
- renderChart(a);renderCats(cm);renderBudgetHealth();renderInsights(a,cm);renderTable(a);renderReports();$("shown").textContent=`Showing ${a.length} of ${state.expenses.length}`;renderBudgetGrid();
+ renderChart(a);renderCats(cm);renderBudgetHealth();renderInsights(a,cm);renderTable(a);renderReports();$("shown").textContent=`Showing ${a.length} of ${state.expenses.length}`;renderBudgetGrid();renderSavings();
 }
 function renderChart(a){
  const month=$("monthFilter")?.value||currentMonth();
@@ -557,6 +572,35 @@ function importCSV(file){
  };
  reader.readAsText(file);
 }
+function financialTotals(f){
+ const x=f||{}; const inv={sip:Number(x.sip||0),market:Number(x.market||0),rd:Number(x.rd||0),fd:Number(x.fd||0),gold:Number(x.gold||0),ppf:Number(x.ppf||0),other:Number(x.other||0)};
+ const invested=Object.values(inv).reduce((a,b)=>a+b,0),income=Number(x.income||0),rate=income>0?invested/income*100:0;
+ const spent=state.expenses.filter(e=>monthKey(e.date)===(x.month||currentMonth())).reduce((a,e)=>a+Number(e.amount||0),0);
+ return {income,inv,invested,rate,spent,cashAfterExpenses:income-spent};
+}
+function zoneFor(rate){if(rate>=30)return {cls:"good",icon:"🟢",title:"Preferred zone",text:"30%+ of salary invested"};if(rate>=20)return {cls:"warn",icon:"🟡",title:"Good zone",text:"20–29.9% of salary invested"};if(rate>=10)return {cls:"warn",icon:"🟠",title:"Building the habit",text:"10–19.9% of salary invested"};return {cls:"low",icon:"🔴",title:"Needs improvement",text:"Below 10% of salary invested"};}
+function investmentRows(t){const arr=[["SIP / Mutual Funds",t.inv.sip],["Market / Stocks",t.inv.market],["RD",t.inv.rd],["FD",t.inv.fd],["Gold",t.inv.gold],["PPF / NPS",t.inv.ppf],["Other",t.inv.other]];return arr.filter(x=>x[1]>0).map(x=>`<div class="investRow"><b>${esc(x[0])}</b><span>${money(x[1])}</span></div>`).join("")||'<div class="empty">No investments entered yet.</div>';}
+function savingsMarkup(t){const z=zoneFor(t.rate),width=Math.min(100,Math.max(0,t.rate));return `<div style="margin-top:14px"><div class="moneyFlow"><div class="moneyMetric"><div class="k">Take-home salary</div><div class="v">${money(t.income)}</div></div><div class="moneyMetric"><div class="k">Monthly investments</div><div class="v">${money(t.invested)}</div></div><div class="moneyMetric"><div class="k">Investment rate</div><div class="v">${t.rate.toFixed(1)}%</div></div></div><div class="zone ${z.cls}"><div><b>${z.icon} ${z.title}</b><br><small>${z.text}</small></div><strong>${t.rate.toFixed(1)}%</strong></div><div class="savingsBar"><i style="width:${width}%"></i></div><div class="savingsNote">Monthly expenses: <b>${money(t.spent)}</b> · Cash after recorded expenses: <b>${money(t.cashAfterExpenses)}</b>. Investment-rate guidance is a Pulse planning aid, not financial advice.</div><div class="investGrid" style="margin-top:12px">${investmentRows(t)}</div></div>`;}
+function financialHealth(t){
+ const income=t.income, savings=Math.max(0,t.cashAfterExpenses), savingsRate=income>0?savings/income*100:0, expenseRate=income>0?t.spent/income*100:0;
+ if(!income)return {score:0,savings,savingsRate,expenseRate,title:"Add your income",icon:"⚪",cls:"attention",message:"Enter your take-home salary to calculate your Pulse Financial Health."};
+ const investmentScore=Math.min(40,(t.rate/30)*40);
+ const savingsScore=Math.min(30,(savingsRate/20)*30);
+ const expenseScore=expenseRate<=50?20:expenseRate<=70?20-(expenseRate-50)*0.75:0;
+ const bufferScore=(savings>=0?10:0);
+ const score=Math.round(Math.max(0,Math.min(100,investmentScore+savingsScore+expenseScore+bufferScore)));
+ let title="Needs attention",icon="🔴",cls="attention",message="Focus on keeping expenses manageable and building consistent savings.";
+ if(score>=80){title="Strong",icon="🟢",cls="strong";message="Your current cash flow and investment pattern look strong for this month.";}
+ else if(score>=65){title="Healthy",icon="🔵",cls="good";message="You have a healthy foundation. Keep building consistency month by month.";}
+ else if(score>=50){title="Building",icon="🟡",cls="building";message="You are building the habit. Small improvements can strengthen your monthly position.";}
+ return {score,savings,savingsRate,expenseRate,title,icon,cls,message};
+}
+function healthMarkup(t){const h=financialHealth(t);return `<div class="healthCard ${h.cls}"><div class="healthHead"><div><div class="eyebrow">FINANCIAL HEALTH</div><div class="healthTitle">${h.icon} ${h.title}</div><div class="healthSub">${esc(h.message)}</div></div><div class="healthScore"><div class="healthRing" style="--score:${h.score}"><strong>${h.score}</strong></div><div><div class="healthTitle">${h.score}/100</div><div class="healthSub">Pulse score</div></div></div></div>${h.score>0?`<div class="healthBar"><i style="width:${h.score}%"></i></div><div class="healthMetrics"><div class="healthMetric"><div class="k">Income</div><div class="v">${money(t.income)}</div><div class="s">Take-home</div></div><div class="healthMetric"><div class="k">Expenses</div><div class="v">${money(t.spent)}</div><div class="s">${h.expenseRate.toFixed(1)}% of income</div></div><div class="healthMetric"><div class="k">Savings</div><div class="v">${money(h.savings)}</div><div class="s">${h.savingsRate.toFixed(1)}% after expenses</div></div><div class="healthMetric"><div class="k">Investments</div><div class="v">${money(t.invested)}</div><div class="s">${t.rate.toFixed(1)}% of income</div></div></div>`:''}<div class="healthNote">Savings here means income minus expenses recorded in Pulse for this month. Investments are shown separately and may be part of your savings. The score is a Pulse planning indicator, not financial advice.</div></div>`;}
+function renderSavings(){const t=financialTotals(state.financial);if($("savingsHome"))$("savingsHome").innerHTML=savingsMarkup(t);if($("savingsPage"))$("savingsPage").innerHTML=`<div class="card cardPad">${savingsMarkup(t)}</div>`;if($("healthHome"))$("healthHome").innerHTML=healthMarkup(t);if($("healthPage"))$("healthPage").innerHTML=healthMarkup(t);}
+
+async function openSavings(){const f=state.financial||{};$("smonth").value=f.month||currentMonth();$("sincome").value=f.income||"";$("ssip").value=f.sip||"";$("smarket").value=f.market||"";$("srd").value=f.rd||"";$("sfd").value=f.fd||"";$("sgold").value=f.gold||"";$("sppf").value=f.ppf||"";$("sother").value=f.other||"";openModal("savingsModal");}
+async function saveSavings(){const month=$("smonth").value||currentMonth(),income=Number($("sincome").value||0);if(!income){alert("Enter your take-home salary.");$("sincome").focus();return}const payload={user_id:session.user.id,month,income,sip:Number($("ssip").value||0),market:Number($("smarket").value||0),rd:Number($("srd").value||0),fd:Number($("sfd").value||0),gold:Number($("sgold").value||0),ppf:Number($("sppf").value||0),other:Number($("sother").value||0)};const r=await sb.from("monthly_financials").upsert(payload,{onConflict:"user_id,month"}).select().single();if(r.error){alert(r.error.code==="42P01"?"Please run the Pulse v11 Supabase migration first.":r.error.message);return}if(month===currentMonth())state.financial=r.data;closeModal("savingsModal");renderSavings();toast("Monthly savings plan updated");}
+
 function renderReports(){
  const el=$("reportMonth"); if(!el)return;
  const months=[...new Set(state.expenses.map(x=>monthKey(x.date)))].sort().reverse();
@@ -587,30 +631,11 @@ async function deleteMyAccount(){
  }catch(err){$("deleteAccountMsg").textContent=err.message||"Account deletion failed. Nothing was deleted.";btn.disabled=false;btn.textContent="Delete permanently"}
 }
 
-function getGreetingTime(){
- const hour=new Date().getHours();
- if(hour>=5&&hour<12)return {label:"morning",emoji:"👋"};
- if(hour>=12&&hour<18)return {label:"afternoon",emoji:"☀️"};
- return {label:"evening",emoji:"🌙"};
-}
-
-function updateGreeting(){
- const el=$("greeting");
- if(!el||!session)return;
- const greetingName=profile?.display_name||session.user.email.split("@")[0];
- const t=getGreetingTime();
- el.innerHTML=`<span class="greetingHello">Good ${t.label} ${t.emoji}</span><span class="greetingName">${esc(greetingName)}</span>`;
-}
-
-function startGreetingClock(){
- updateGreeting();
- clearInterval(window.__pulseGreetingTimer);
- window.__pulseGreetingTimer=setInterval(updateGreeting,60000);
-}
-
 function renderApp(){
  appShell();renderHome();renderExpenseList();
- startGreetingClock();
+ const greetingName=profile?.display_name||session.user.email.split("@")[0];
+ const greetingTime=new Date().getHours()<12?"morning":new Date().getHours()<18?"afternoon":"evening";
+ $("greeting").innerHTML=`<span class="greetingHello">Good ${greetingTime} 👋</span><span class="greetingName">${esc(greetingName)}</span>`;
  maybeShowOnboarding();
 }
 
