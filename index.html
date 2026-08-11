@@ -81,6 +81,23 @@ button{min-height:42px}
 
 /* Pulse v15 — Dedicated Wealth Command Center */
 .wealthTopGrid{display:grid;grid-template-columns:1.25fr .75fr;gap:15px;margin-top:15px}.wealthHealth{padding:20px;position:relative;overflow:hidden;background:linear-gradient(135deg,#121a3a,#102c3a 65%,#0a3c3b);border-color:#2e5270}.wealthHealth:after{content:"";position:absolute;width:220px;height:220px;border-radius:50%;right:-90px;top:-90px;background:#22d3ee12;filter:blur(2px)}.whScore{display:flex;align-items:center;gap:16px}.whCircle{width:92px;height:92px;border-radius:50%;display:grid;place-items:center;background:conic-gradient(#22d3ee calc(var(--score)*1%),#ffffff10 0);position:relative;flex:none}.whCircle:before{content:"";position:absolute;inset:8px;border-radius:50%;background:#10182b}.whCircle b{position:relative;font-size:25px}.whStatus{font-size:22px;font-weight:950}.whMeta{color:#94a3b8;font-size:11px;margin-top:5px}.whBar{height:10px;background:#ffffff0b;border-radius:99px;overflow:hidden;margin-top:14px}.whBar i{display:block;height:100%;background:linear-gradient(90deg,#8b5cf6,#22d3ee);border-radius:99px}.wealthPulse{padding:20px}.pulseStats{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}.pulseStat{padding:12px;border:1px solid var(--line);border-radius:14px;background:#ffffff04}.pulseStat .k{font-size:9px;text-transform:uppercase;letter-spacing:.08em;color:#94a3b8;font-weight:900}.pulseStat .v{font-size:20px;font-weight:950;margin-top:4px}.pulseStat .s{font-size:10px;color:#64748b;margin-top:3px}.wealthSectionTitle{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:12px}.wealthSectionTitle h3{margin:0}.wealthHint{color:#94a3b8;font-size:11px}.wealthNetChart{height:150px;display:flex;align-items:flex-end;gap:7px;padding:14px 4px 20px}.wealthNetBar{flex:1;min-width:12px;border-radius:6px 6px 2px 2px;background:linear-gradient(180deg,#22d3ee,#6366f1);position:relative}.wealthNetBar span{position:absolute;bottom:-17px;left:0;right:0;text-align:center;font-size:8px;color:#64748b}.wealthNetBar em{position:absolute;top:-17px;left:50%;transform:translateX(-50%);font-size:8px;color:#cbd5e1;font-style:normal;white-space:nowrap}.quickTiles{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.quickTile{padding:14px;border:1px solid var(--line);border-radius:15px;background:linear-gradient(145deg,#ffffff06,#ffffff02);cursor:pointer;color:inherit;text-align:left}.quickTile:hover{border-color:#4f6b91;transform:translateY(-1px)}.quickTile b{display:block}.quickTile small{display:block;color:#94a3b8;margin-top:5px;line-height:1.35}.wealthFooterNote{color:#64748b;font-size:10px;line-height:1.5;margin-top:12px}@media(max-width:900px){.wealthTopGrid{grid-template-columns:1fr}.quickTiles{grid-template-columns:1fr 1fr}}@media(max-width:600px){.quickTiles{grid-template-columns:1fr}.whScore{align-items:flex-start}.whCircle{width:78px;height:78px}.whStatus{font-size:18px}}
+
+/* Pulse premium wallet illustration */
+.pulse-wallet-art{position:absolute;right:3%;top:34px;width:min(360px,30vw);opacity:.92;pointer-events:none;z-index:0;filter:drop-shadow(0 18px 38px #0005)}
+.pulse-wallet-art img{display:block;width:100%;height:auto}
+[data-view="home"] .heroGrid>div{position:relative;z-index:1}
+[data-view="home"] .heroGrid>.pulse-wallet-art{z-index:0}
+@media(max-width:1100px) and (min-width:681px){
+  .pulse-wallet-art{right:1%;width:min(310px,34vw);opacity:.38}
+}
+@media(max-width:680px){
+  .heroGrid{display:flex!important;flex-direction:column}
+  .pulse-wallet-art{position:relative;right:auto;top:auto;width:100%;max-width:340px;margin:0 auto 4px;order:2;opacity:.92}
+  [data-view="home"] .heroGrid>div:first-child{order:1}
+  [data-view="home"] .heroGrid>.pulse-wallet-art{order:2}
+  [data-view="home"] .heroGrid>div:last-child{order:3}
+}
+
 </style>
 
 <style id="pulse-commercial-polish">
@@ -281,7 +298,8 @@ function appShell(){
   <button type="button" class="dangerText" id="accountMenuSignOut">🚪 Sign out</button>
 </div><button class="btn setupBadge" id="setupBtn">✦ Setup</button><button class="btn desktop" id="settingsBtn">⚙ Settings</button><button class="btn primary" id="addBtn">＋ Add expense</button></div></header>
 
-<section data-view="home"><div class="hero"><div class="heroGrid"><div><div class="eyebrow">PULSE OVERVIEW</div><h2 id="greeting">Good day 👋</h2><p>Track today. Understand this month. Stay in control.</p><div id="quickActions" class="quick"></div></div><div><div class="label">This month</div><div id="total" class="heroTotal">₹0</div><div id="delta" class="delta">0 transactions</div></div></div>
+<section data-view="home"><div class="hero"><div class="heroGrid">
+<div class="pulse-wallet-art" aria-hidden="true"><img src="assets/pulse-wallet.svg" alt="" loading="eager" decoding="async"></div><div><div class="eyebrow">PULSE OVERVIEW</div><h2 id="greeting">Good day 👋</h2><p>Track today. Understand this month. Stay in control.</p><div id="quickActions" class="quick"></div></div><div><div class="label">This month</div><div id="total" class="heroTotal">₹0</div><div id="delta" class="delta">0 transactions</div></div></div>
 <div class="filters"><select id="monthFilter" class="control"></select><select id="catFilter" class="control"></select><select id="payFilter" class="control"></select><input id="search" class="control" placeholder="Search expenses…"><button id="resetBtn" class="btn">Reset</button></div><div id="setupBanner" class="note" style="display:none;margin-top:14px"></div></div>
 
 <div id="moneySnapshot" class="moneySnapshot"></div><div id="pulsePersonality" class="pulsePersonality" style="margin-top:15px"></div>
