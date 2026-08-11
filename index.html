@@ -136,6 +136,21 @@ button{min-height:42px}
 .moneySnapshot{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px;margin:15px 0}.moneyCard{padding:14px;border:1px solid var(--line);border-radius:16px;background:#0d1423e8;min-width:0}.moneyCard .mk{font-size:9px;color:#94a3b8;font-weight:900;text-transform:uppercase;letter-spacing:.07em}.moneyCard .mv{font-size:21px;font-weight:950;margin-top:6px;overflow-wrap:anywhere}.moneyCard .ms{font-size:10px;color:#64748b;margin-top:4px}
 .wealthGrid{display:grid;grid-template-columns:1.15fr .85fr;gap:15px;margin-top:15px}.wealthCard{padding:18px}.goalList,.nwList,.recList{display:grid;gap:10px}.goalItem,.nwItem,.recItem{padding:13px;border:1px solid var(--line);border-radius:15px;background:#ffffff04}.goalTop,.recTop{display:flex;justify-content:space-between;gap:10px}.goalBar{height:9px;background:#ffffff0c;border-radius:99px;overflow:hidden;margin-top:9px}.goalBar i{display:block;height:100%;background:linear-gradient(90deg,#8b5cf6,#22d3ee);border-radius:99px}.goalMeta{display:flex;justify-content:space-between;color:#94a3b8;font-size:10px;margin-top:6px}.nwTotals{display:grid;grid-template-columns:1fr 1fr;gap:10px}.nwMetric{padding:12px;border:1px solid var(--line);border-radius:14px;background:#ffffff04}.nwMetric .k{font-size:10px;color:#94a3b8;text-transform:uppercase;font-weight:900}.nwMetric .v{font-size:20px;font-weight:900;margin-top:4px}.wealthActions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.tinyBtn{padding:7px 9px!important;font-size:11px!important}.miniChart{height:180px;display:flex;align-items:flex-end;gap:5px;padding:10px 4px 22px}.miniBar{flex:1;min-width:8px;background:linear-gradient(180deg,#22d3ee,#8b5cf6);border-radius:5px 5px 2px 2px;position:relative}.miniBar span{position:absolute;bottom:-19px;left:0;right:0;text-align:center;font-size:8px;color:#64748b}.dataTools{display:grid;grid-template-columns:1fr 1fr;gap:10px}.toolCard{padding:15px;border:1px solid var(--line);border-radius:15px;background:#ffffff04}.toolCard b{display:block;margin-bottom:5px}.toolCard small{color:#94a3b8;line-height:1.45}.alertItem{padding:11px 12px;border:1px solid var(--line);border-radius:13px;background:#ffffff04}.alertItem strong{display:block}.alertItem small{color:#94a3b8}.emptyMini{padding:20px;text-align:center;color:#64748b;border:1px dashed var(--line);border-radius:14px}@media(max-width:1200px){.moneySnapshot{grid-template-columns:repeat(3,1fr)}}@media(max-width:760px){.moneySnapshot{grid-template-columns:1fr 1fr}.wealthGrid{grid-template-columns:1fr}.dataTools{grid-template-columns:1fr}.moneyCard .mv{font-size:18px}}
 </style>
+
+<style id="pulse-personality-v15-7">
+.pulsePersonality{display:grid;grid-template-columns:1.05fr .95fr 1.4fr;gap:10px}
+.personalityCard{position:relative;overflow:hidden;padding:16px;border:1px solid var(--line);border-radius:18px;background:linear-gradient(135deg,#10182a,#17133a 55%,#07353b);box-shadow:0 12px 35px #0004}
+.personalityCard:after{content:"";position:absolute;width:120px;height:120px;right:-55px;top:-60px;border-radius:50%;background:#22d3ee14;pointer-events:none}
+.personalityK{font-size:9px;color:#a5b4fc;font-weight:900;text-transform:uppercase;letter-spacing:.08em}
+.personalityTitle{font-size:16px;font-weight:950;margin-top:5px}
+.personalityText{font-size:11px;color:#cbd5e1;line-height:1.5;margin-top:5px}
+.personalityEmoji{font-size:22px;line-height:1}
+.personalityTip{border-color:#8b5cf655;background:linear-gradient(135deg,#21164f,#111827 70%)}
+.personalityTip b{color:#f8fafc}
+@media(max-width:900px){.pulsePersonality{grid-template-columns:1fr 1fr}.personalityTip{grid-column:1/-1}}
+@media(max-width:600px){.pulsePersonality{grid-template-columns:1fr}.personalityTip{grid-column:auto}}
+</style>
+
 </head>
 <body>
 <div id="root"></div>
@@ -269,7 +284,9 @@ function appShell(){
 <section data-view="home"><div class="hero"><div class="heroGrid"><div><div class="eyebrow">PULSE OVERVIEW</div><h2 id="greeting">Good day 👋</h2><p>Track today. Understand this month. Stay in control.</p><div id="quickActions" class="quick"></div></div><div><div class="label">This month</div><div id="total" class="heroTotal">₹0</div><div id="delta" class="delta">0 transactions</div></div></div>
 <div class="filters"><select id="monthFilter" class="control"></select><select id="catFilter" class="control"></select><select id="payFilter" class="control"></select><input id="search" class="control" placeholder="Search expenses…"><button id="resetBtn" class="btn">Reset</button></div><div id="setupBanner" class="note" style="display:none;margin-top:14px"></div></div>
 
-<div id="moneySnapshot" class="moneySnapshot"></div><div class="stats"><div class="card stat"><div class="label">Transactions</div><div id="count" class="num">0</div><div class="sub">selected view</div></div><div class="card stat"><div class="label">Average</div><div id="avg" class="num">₹0</div><div class="sub">per transaction</div></div><div class="card stat"><div class="label">Largest</div><div id="largest" class="num">₹0</div><div class="sub">single expense</div></div><div class="card stat"><div class="label">Top category</div><div id="topCat" class="num">—</div><div class="sub" id="topCatAmt">₹0</div></div></div>
+<div id="moneySnapshot" class="moneySnapshot"></div><div id="pulsePersonality" class="pulsePersonality" style="margin-top:15px"></div>
+
+<div class="stats"><div class="card stat"><div class="label">Transactions</div><div id="count" class="num">0</div><div class="sub">selected view</div></div><div class="card stat"><div class="label">Average</div><div id="avg" class="num">₹0</div><div class="sub">per transaction</div></div><div class="card stat"><div class="label">Largest</div><div id="largest" class="num">₹0</div><div class="sub">single expense</div></div><div class="card stat"><div class="label">Top category</div><div id="topCat" class="num">—</div><div class="sub" id="topCatAmt">₹0</div></div></div>
 
 <div class="grid2"><div class="card cardPad"><h3>Spending pulse</h3><div id="chart" class="chart"></div></div><div class="card cardPad"><h3>Category breakdown</h3><div id="cats" class="cats"></div></div></div>
 <div class="grid2" style="margin-top:15px"><div class="card cardPad"><h3>Budget health</h3><div id="budgetHealth"></div></div><div class="card cardPad"><h3>Pulse insights</h3><div id="insights" class="insights"></div></div></div><div class="savingsHero" style="margin-top:15px"><div class="eyebrow">SAVINGS & INVESTMENTS</div><div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap"><div><h3 style="margin:5px 0 4px">Make your money work harder.</h3><p style="margin:0;color:#cbd5e1">Track salary, monthly savings and investments in one place.</p></div><button id="editSavingsBtn" class="btn primary">＋ Update plan</button></div><div id="savingsHome"></div></div><div id="financialHealthHome"></div>
@@ -465,11 +482,41 @@ function renderSetupBanner(){
  if(!missing.length){el.style.display="none";el.innerHTML="";return;}
  el.style.display="block";el.innerHTML=`<b>Finish your Pulse setup</b><br><span style="color:#bae6fd">No personal defaults are preloaded. Add your own ${esc(missing.join(", "))} before recording expenses.</span><br><button class="btn" style="margin-top:9px" id="setupNow">⚙ Set up my options</button>`;$("setupNow").onclick=openTemplates;
 }
+function renderPulsePersonality(a){
+ const el=$("pulsePersonality");if(!el)return;
+ const month=currentMonth(),monthExp=state.expenses.filter(x=>monthKey(x.date)===month),spent=monthExp.reduce((s,x)=>s+Number(x.amount||0),0);
+ const overall=state.budgets.find(b=>normalizeMonth(b.month)===month&&!b.category_id);
+ let mood={emoji:"🌱",title:"Fresh start!",text:"Your Pulse is ready. Add expenses and let the insights build."};
+ if(spent>0&&overall){
+   const pct=spent/Number(overall.amount||1)*100;
+   if(pct>100)mood={emoji:"🚨",title:"Budget alarm!",text:`You've used ${pct.toFixed(0)}% of your monthly budget. Time to ease up a little 😅`};
+   else if(pct<=50)mood={emoji:"😎",title:"You're in control!",text:`Only ${pct.toFixed(0)}% of your budget is used. Nice work keeping the wallet calm.`};
+   else mood={emoji:"🙂",title:"Steady pace",text:`You're ${pct.toFixed(0)}% through the budget. Keep an eye on the rest of the month.`};
+ }else if(spent>0){
+   mood={emoji:"👀",title:"Keep an eye on it",text:"No overall budget is set yet. Your spending is being tracked, but a limit can make Pulse smarter."};
+ }
+ const t=financialTotals(state.financial);
+ const invRate=t.rate||0;
+ const wealth=invRate>=30?{emoji:"🚀",title:"Wealth Builder Mode",text:`${invRate.toFixed(1)}% of your take-home is planned for investments. Keep the momentum going!`}:invRate>=20?{emoji:"🎯",title:"Great investing habit",text:`${invRate.toFixed(1)}% of income is going into your investment plan.`}:invRate>=10?{emoji:"🌱",title:"Building the habit",text:`You're investing ${invRate.toFixed(1)}%. Small, consistent steps can add up.`}:{emoji:"💡",title:"Room to build",text:"Set up a monthly investment plan in Savings and let Pulse track your progress."};
+ let tip={emoji:"💡",title:"Pulse tip",text:"Keep logging expenses. The more complete your data, the more useful your insights become."};
+ if(monthExp.length){
+   const byDay={};monthExp.forEach(x=>byDay[x.date]=(byDay[x.date]||0)+Number(x.amount||0));
+   const topDay=Object.entries(byDay).sort((x,y)=>y[1]-x[1])[0];
+   const byCat={};monthExp.forEach(x=>byCat[x.type]=(byCat[x.type]||0)+Number(x.amount||0));
+   const topCat=Object.entries(byCat).sort((x,y)=>y[1]-x[1])[0];
+   if(topDay&&topCat){
+     const d=new Date(topDay[0]+"T00:00:00");const day=d.toLocaleDateString(undefined,{month:"short",day:"numeric"});
+     tip={emoji:"💸",title:"Your wallet had a big day 😄",text:`${day} was your highest-spend day at ${money(topDay[1])}. ${esc(topCat[0])} is leading your spending at ${money(topCat[1])}.`};
+   }
+ }
+ el.innerHTML=`<div class="personalityCard"><div class="personalityEmoji">${mood.emoji}</div><div class="personalityK">Spending mood</div><div class="personalityTitle">${mood.title}</div><div class="personalityText">${mood.text}</div></div><div class="personalityCard"><div class="personalityEmoji">${wealth.emoji}</div><div class="personalityK">Money momentum</div><div class="personalityTitle">${wealth.title}</div><div class="personalityText">${wealth.text}</div></div><div class="personalityCard personalityTip"><div class="personalityEmoji">${tip.emoji}</div><div class="personalityK">Pulse of the day</div><div class="personalityTitle">${tip.title}</div><div class="personalityText">${tip.text}</div></div>`;
+}
+
 function renderHome(){
  if(!$("total"))return;renderFilters();renderQuickActions();renderSetupBanner();const a=filteredExpenses();const total=a.reduce((s,x)=>s+x.amount,0);$("total").textContent=money(total);$("count").textContent=a.length;$("avg").textContent=money(a.length?total/a.length:0);
  const largest=a.reduce((m,x)=>!m||x.amount>m.amount?x:m,null);$("largest").textContent=money(largest?.amount||0);
  const cm={};a.forEach(x=>cm[x.type]=(cm[x.type]||0)+x.amount);const top=Object.entries(cm).sort((a,b)=>b[1]-a[1])[0];$("topCat").textContent=top?.[0]||"—";$("topCatAmt").textContent=money(top?.[1]||0);$("delta").textContent=`${a.length} transaction${a.length===1?"":"s"} in selected view`;
- renderChart(a);renderCats(cm);renderBudgetHealth();renderInsights(a,cm);renderTable(a);renderReports();renderMoneySnapshot();renderWealth();$("shown").textContent=`Showing ${a.length} of ${state.expenses.length}`;renderBudgetGrid();renderSavings();
+ renderPulsePersonality(a);renderChart(a);renderCats(cm);renderBudgetHealth();renderInsights(a,cm);renderTable(a);renderReports();renderMoneySnapshot();renderWealth();$("shown").textContent=`Showing ${a.length} of ${state.expenses.length}`;renderBudgetGrid();renderSavings();
 }
 function renderChart(a){
  const month=$("monthFilter")?.value||currentMonth();
