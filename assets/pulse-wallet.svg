@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 330" role="img" aria-labelledby="title desc">
+<title id="title">Pulse financial growth</title>
+<desc id="desc">A premium fintech wallet with Indian rupee coins, savings growth and an upward investment chart.</desc>
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#8b5cf6" stop-opacity=".28"/><stop offset="1" stop-color="#22d3ee" stop-opacity=".08"/></linearGradient>
+  <linearGradient id="wallet" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#a78bfa"/><stop offset=".55" stop-color="#6366f1"/><stop offset="1" stop-color="#2563eb"/></linearGradient>
+  <linearGradient id="coin" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#fde68a"/><stop offset="1" stop-color="#f59e0b"/></linearGradient>
+  <linearGradient id="chart" x1="0" y1="1" x2="0" y2="0"><stop stop-color="#22d3ee" stop-opacity=".08"/><stop offset="1" stop-color="#22d3ee" stop-opacity=".42"/></linearGradient>
+  <filter id="glow"><feGaussianBlur stdDeviation="8" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  <filter id="shadow"><feDropShadow dx="0" dy="14" stdDeviation="14" flood-color="#000" flood-opacity=".35"/></filter>
+</defs>
+<rect x="12" y="12" width="596" height="306" rx="34" fill="url(#bg)" stroke="#fff" stroke-opacity=".08"/>
+<path d="M350 246 C395 214 420 226 448 187 S505 160 548 103" fill="none" stroke="#22d3ee" stroke-width="7" stroke-linecap="round" filter="url(#glow)"/>
+<path d="M350 246 C395 214 420 226 448 187 S505 160 548 103 L548 246Z" fill="url(#chart)"/>
+<g transform="translate(392 54) rotate(-10)" filter="url(#shadow)">
+<rect width="132" height="92" rx="18" fill="#101827" stroke="#8b5cf6" stroke-width="3"/>
+<path d="M28 62 C40 48 52 78 66 60 S88 48 104 65" fill="none" stroke="#34d399" stroke-width="4" stroke-linecap="round"/>
+</g>
+<g transform="translate(166 96) rotate(-4)" filter="url(#shadow)">
+<rect width="218" height="142" rx="34" fill="url(#wallet)"/>
+<rect x="18" y="18" width="182" height="106" rx="26" fill="#0b1020" fill-opacity=".26" stroke="#fff" stroke-opacity=".2"/>
+<rect x="34" y="43" width="80" height="18" rx="9" fill="#fff" fill-opacity=".17"/>
+<rect x="34" y="75" width="118" height="11" rx="5" fill="#fff" fill-opacity=".11"/>
+<circle cx="170" cy="88" r="20" fill="#22d3ee" fill-opacity=".9"/>
+<path d="M163 88l7 7 12-16" fill="none" stroke="#07111b" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<g filter="url(#shadow)">
+<circle cx="177" cy="55" r="27" fill="url(#coin)" stroke="#fef3c7" stroke-width="3"/>
+<text x="177" y="65" text-anchor="middle" font-size="28" font-weight="900" fill="#92400e">₹</text>
+<circle cx="286" cy="58" r="23" fill="url(#coin)" stroke="#fef3c7" stroke-width="3"/>
+<text x="286" y="67" text-anchor="middle" font-size="24" font-weight="900" fill="#92400e">₹</text>
+<circle cx="324" cy="272" r="28" fill="url(#coin)" stroke="#fef3c7" stroke-width="3"/>
+<text x="324" y="281" text-anchor="middle" font-size="27" font-weight="900" fill="#92400e">₹</text>
+<circle cx="465" cy="275" r="21" fill="url(#coin)" stroke="#fef3c7" stroke-width="3"/>
+<text x="465" y="282" text-anchor="middle" font-size="21" font-weight="900" fill="#92400e">₹</text>
+</g>
+<g transform="translate(505 44)" filter="url(#shadow)">
+<path d="M0 40L22 18 48 27 64 0 76 10 55 42 31 33 12 54Z" fill="#f8fafc"/>
+<path d="M48 27L64 0 70 15" fill="#22d3ee"/>
+</g>
+</svg>
